@@ -958,15 +958,15 @@ func (p *ProviderHandler) DescribeSubnets(ctx context.Context, req *pb.DescribeS
 		return nil, err
 	}
 
-	filter := ec2.Filter{
-		Name:   aws.String("availabilityZone"),
-		Values: aws.StringSlice(req.GetZone()),
-	}
+	//filter := ec2.Filter{
+	//	Name:   aws.String("availabilityZone"),
+	//	Values: aws.StringSlice(req.GetZone()),
+	//}
 
 	input := new(ec2.DescribeSubnetsInput)
 	if len(req.GetSubnetId()) > 0 {
 		input.SubnetIds = aws.StringSlice(req.GetSubnetId())
-		input.Filters = []*ec2.Filter{&filter}
+		//input.Filters = []*ec2.Filter{&filter}
 	}
 
 	output, err := instanceService.DescribeSubnets(input)
