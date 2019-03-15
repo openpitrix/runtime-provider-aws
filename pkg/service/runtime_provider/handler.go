@@ -11,10 +11,10 @@ import (
 	runtimeclient "openpitrix.io/openpitrix/pkg/client/runtime"
 	"openpitrix.io/openpitrix/pkg/models"
 	"openpitrix.io/openpitrix/pkg/pb"
+	"openpitrix.io/openpitrix/pkg/pi"
 	"openpitrix.io/openpitrix/pkg/plugins/vmbased"
 	"openpitrix.io/openpitrix/pkg/util/pbutil"
 	"openpitrix.io/openpitrix/pkg/util/stringutil"
-	"openpitrix.io/openpitrix/pkg/pi"
 )
 
 func (p *Server) ParseClusterConf(ctx context.Context, req *pb.ParseClusterConfRequest) (*pb.ParseClusterConfResponse, error) {
