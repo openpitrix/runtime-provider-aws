@@ -12,6 +12,9 @@ zone: .*
 image_name: amzn2-ami-hvm-2.0.20180622.1-x86_64-gp2
 image_url: https://openpitrix.pek3a.qingstor.com/image/amazon-linux.tar.gz
 provider_type: vmbased
+enable: true
+advanced_options: 
+  key_name: openpitrix
 `
 )
 
@@ -20,3 +23,5 @@ const (
 	DefaultDevice      = "/dev/sdf"
 	DefaultZone        = "us-east-2"
 )
+
+const AdvancedOptionsKeyName = "key_name"

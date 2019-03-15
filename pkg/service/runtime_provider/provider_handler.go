@@ -21,6 +21,7 @@ import (
 	"openpitrix.io/openpitrix/pkg/logger"
 	"openpitrix.io/openpitrix/pkg/models"
 	"openpitrix.io/openpitrix/pkg/pb"
+	"openpitrix.io/openpitrix/pkg/pi"
 	"openpitrix.io/openpitrix/pkg/plugins/vmbased"
 	"openpitrix.io/openpitrix/pkg/util/funcutil"
 	"openpitrix.io/openpitrix/pkg/util/jsonutil"
@@ -114,6 +115,12 @@ func (p *ProviderHandler) RunInstances(ctx context.Context, task *models.Task) (
 		MaxCount:          aws.Int64(1),
 		MinCount:          aws.Int64(1),
 	}
+
+	keyName, ok := pi.Global().GlobalConfig().Runtime[Provider].AdvancedOptions[AdvancedOptionsKeyName]
+	if ok && len(keyName.(string)) > 0 {
+		input.KeyName = aws.String(keyName.(string))
+	}
+
 	if instance.NeedUserData == 1 {
 		input.UserData = aws.String(instance.UserDataValue)
 	}
